@@ -1,11 +1,13 @@
 from flask import Flask
+from controllers.pdf import html2pdf_controller
 
 app = Flask(__name__)
+app.register_blueprint(html2pdf_controller)
 
 
 @app.route('/')
-def hello_world():
-    return 'HTML2PDF'
+def home():
+    return 'HTML2PDF micro service'
 
 
 if __name__ == '__main__':

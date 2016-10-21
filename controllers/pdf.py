@@ -11,7 +11,8 @@ html2pdf_controller = Blueprint('html2pdf', __name__)
 def post():
     try:
         json_data = request.get_json(force=True)
-        base64_pdf_string = Pdf.html2pdf(base64.decodestring(json_data['base64_html']))
+        pdf = Pdf(base64.b64decode(json_data['base64_html']), pin=json_data['pin'])
+        base64_pdf_string = pdf.html2pdf()
         return jsonify({'base64_pdf': base64_pdf_string})
     except Exception as ex:
         logging.error(ex)

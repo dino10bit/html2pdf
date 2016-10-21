@@ -1,0 +1,4 @@
+#!/bin/bash
+XVFB=xvfb-run
+WKHTMLTOPDF="wkhtmltopdf"
+$XVFB -a -s "-screen 0 1280x1024x16" $WKHTMLTOPDF $@
